@@ -19,7 +19,7 @@
  *   5, 10 => 50
  *   5, 5  => 25
  */
-function getRectangleArea(width, height ) {
+function getRectangleArea(width, height) {
   return width * height;
 }
 
@@ -70,8 +70,8 @@ function getAverage(value1, value2) {
  *   (0,0) (1,0)    => 1
  *   (-5,0) (10,-10) => 18.027756377319946
  */
-function getDistanceBetweenPoints(x1, y1, x2, y2 ) {
-  return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+function getDistanceBetweenPoints(x1, y1, x2, y2) {
+  return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
 }
 
 /**
@@ -89,9 +89,8 @@ function getDistanceBetweenPoints(x1, y1, x2, y2 ) {
 function getLinearEquationRoot(a, b) {
   if (a === 1) {
     return -b;
-  } else {
-    return -b / a;
   }
+  return -b / a;
 }
 
 /**
@@ -113,14 +112,15 @@ function getLinearEquationRoot(a, b) {
  *   (0,1) (1,2)     => 0
  */
 function getAngleBetweenVectors(x1, y1, x2, y2) {
-    const angleRadians = Math.atan2(y2 - y1, x2 - x1);
+  const angleRadians = Math.atan2(y2 - y1, x2 - x1);
 
-    if (angleRadians < 0) {
-      return angleRadians + 2 * Math.PI;
-    } else {
-      return angleRadians;
-    }
+  if (angleRadians < 0) {
+    return angleRadians + 2 * Math.PI;
+  }
+
+  return angleRadians;
 }
+
 
 /**
  * Returns a last digit of a integer number.
@@ -134,9 +134,9 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit( value ) {
+function getLastDigit(value) {
   const valueStr = value.toString();
-  const lastDigitStr = valueStr[valueStr.length - 1]; 
+  const lastDigitStr = valueStr[valueStr.length - 1];
   return parseInt(lastDigitStr, 10);
 }
 
@@ -152,8 +152,8 @@ function getLastDigit( value ) {
  *     '37'     => 37
  * '-525.5'     => -525.5
  */
-function parseNumberFromString( value ) {
-  return parseInt(value, 10);
+function parseNumberFromString(value) {
+  return parseFloat(value);
 }
 
 /**
@@ -169,10 +169,9 @@ function parseNumberFromString( value ) {
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelepipedDiagonal( a, b, c ) {
+function getParallelepipedDiagonal(a, b, c) {
   return Math.sqrt(a * a + b * b + c * c);
 }
-
 
 /**
  * Returns the number rounded to specified power of 10.
@@ -191,7 +190,7 @@ function getParallelepipedDiagonal( a, b, c ) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(num, pow ) {
+function roundToPowerOfTen(num, pow) {
   return Math.round(num / 10 ** pow) * 10 ** pow;
 }
 
@@ -215,7 +214,7 @@ function roundToPowerOfTen(num, pow ) {
 function isPrime(n) {
   if (n < 2) return false;
   const limit = Math.sqrt(n);
-  for (let i = 2; i <= limit; ++i) {
+  for (let i = 2; i <= limit; i += 1) {
     if (n % i === 0) {
       return false;
     }
@@ -238,9 +237,9 @@ function isPrime(n) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(value, def ) {
+function toNumber(value, def) {
   const num = parseFloat(value);
-  return isNaN(num) ? def : num;
+  return Number.isNaN(num) ? def : num;
 }
 
 module.exports = {
