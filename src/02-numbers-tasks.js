@@ -52,9 +52,12 @@ function getCircleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  return (value1 + value2) / 2;
+  const res = (value1 + value2) / 2;
+  if (res === Infinity) {
+    return Number.MAX_VALUE;
+  }
+  return res;
 }
-
 /**
  * Returns a distance between two points by cartesian coordinates.
  *
@@ -112,13 +115,15 @@ function getLinearEquationRoot(a, b) {
  *   (0,1) (1,2)     => 0
  */
 function getAngleBetweenVectors(x1, y1, x2, y2) {
-  const angleRadians = Math.atan2(y2 - y1, x2 - x1);
+  const dotProduct = x1 * x2 + y1 * y2;
 
-  if (angleRadians < 0) {
-    return angleRadians + 2 * Math.PI;
-  }
+  const magnitude1 = Math.sqrt(x1 * x1 + y1 * y1);
+  const magnitude2 = Math.sqrt(x2 * x2 + y2 * y2);
 
-  return angleRadians;
+  const cosTheta = dotProduct / (magnitude1 * magnitude2);
+  const theta = Math.acos(cosTheta);
+
+  return theta;
 }
 
 
