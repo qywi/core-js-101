@@ -487,4 +487,3 @@ module.exports = {
   getMatrixProduct,
   evaluateTicTacToePosition,
 };
-
